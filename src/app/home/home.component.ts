@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('searchbar') searchbar: ElementRef;
   searchText = '';
   currentCondition: any;
+  forecasts: any;
 
   toggleSearch: boolean = false;
   constructor(private accuweather: AccuWeatherService) {
@@ -32,6 +33,11 @@ export class HomeComponent implements OnInit {
     this.accuweather.getCurrentCondition('350540').subscribe(resp => {
       console.log(resp);
       this.currentCondition = resp;
+    });
+
+    this.accuweather.getCurrentCondition5days('350540').subscribe(resp => {
+      console.log(resp);
+      this.forecasts = resp;
     });
 
   }

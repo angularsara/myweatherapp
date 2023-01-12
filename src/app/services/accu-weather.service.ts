@@ -8,7 +8,14 @@ import { of } from 'rxjs';
 })
 export class AccuWeatherService {
   currentCondtion$: Observable<any>;
+  fivedayweather$: Observable<any>;
   constructor(private httpClient: HttpClient) { }
+
+  getCurrentCondition5days(locationKey: string): Observable<any> {
+    let httpHeaders = new HttpHeaders();
+    httpHeaders.set('apiKey', 'CFzuixDeA0t3B6H7DayU6zJu0ow3ziFc');
+      return this.httpClient.get(`http://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationKey}?apikey=CFzuixDeA0t3B6H7DayU6zJu0ow3ziFc&details=true`, {headers: httpHeaders});
+  }
 
   getCurrentCondition(locationKey: string): Observable<any> {
     // this.currentCondtion$ = this.httpClient.get(`http://dataservice.accuweather.com/currentconditions/v1/${locationKey}`);

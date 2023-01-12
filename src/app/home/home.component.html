@@ -64,6 +64,29 @@
   </tr>
 </table>
 <br>
+Forecast
+
+<table class="datatable">
+  <tr>
+    <th>Temperature Minimum
+    </th>
+    <th>Temperature Maximum
+    </th>
+    <th>Moon
+    </th>
+    <th>Sun
+    </th>
+    <th>TemperatureJson
+    </th>
+  </tr>
+  <tr *ngFor="let forecast of forecasts.DailyForecasts">
+    <td>{{forecast.Temperature.Minimum | json}}</td>
+    <td>{{forecast.Temperature.Maximum | json}}</td>
+    <td>{{forecast.Moon | json}}</td>
+    <td>{{forecast.Sun | json}}</td>
+  </tr>
+</table>
+
 whole json
 <br>
-<div><pre>{{currentCondition | json }}</pre></div>
+<div><pre>{{forecasts.DailyForecasts | json }}</pre></div>
